@@ -1,0 +1,109 @@
+/* About Section Modern UI */
+
+.about-section {
+  width: 100%;
+  padding: 6rem 2rem;
+  background: #111;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* LEFT SECTION */
+.about-photo img {
+  width: 380px;
+  margin-left: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+  height: 500px;
+}
+
+/* RIGHT SECTION */
+.about-content h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: auto;
+}
+
+.about-content p {
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 550px;
+  margin-bottom: 2rem;
+}
+
+/* Tabs */
+.about-tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-tabs button {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  color: #aaa;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.about-tabs button.active {
+  color: #fff;
+}
+
+.about-tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 40px;
+  background: #ff004f;
+  border-radius: 3px;
+}
+
+/* Tab Content */
+.tab-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tab-content li {
+  margin-bottom: 10px;
+  color: #ddd;
+  font-size: 1rem;
+}
+
+.tab-content span {
+  color: #ff004f;
+  font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-photo img {
+    width: 260px;
+  }
+
+  .about-tabs {
+    justify-content: center;
+  }
+}
