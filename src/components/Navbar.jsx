@@ -37,7 +37,10 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="logo">Portfolio</div>
+        <div className="logo">
+          <img src="/logo.png" alt="Sonali Patil Logo" className="logo-img" />
+          <span>PORTFOLIO</span>
+        </div>
 
         <div className={`nav-links ${open ? "open" : ""}`}>
           <a href="#home">Home</a>

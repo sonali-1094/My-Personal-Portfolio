@@ -1,62 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Skills.css";
 import { FaGlobe, FaDatabase, FaCogs, FaTools } from "react-icons/fa";
 
 export default function Skills() {
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const skillsData = [
+    {
+      id: 1,
+      icon: FaGlobe,
+      title: "Frontend",
+      skills: ["JavaScript", "React.js", "Redux", "Tailwind CSS", "Responsive UI Design"]
+    },
+    {
+      id: 2,
+      icon: FaCogs,
+      title: "Backend",
+      skills: ["Java", "Spring Boot", "REST APIs"]
+    },
+    {
+      id: 3,
+      icon: FaDatabase,
+      title: "Database",
+      skills: ["MySQL", "MongoDB"]
+    },
+    {
+      id: 4,
+      icon: FaTools,
+      title: "Tools & Others",
+      skills: ["Git & GitHub", "VS Code", "GenAI", "Clerk", "Figma"]
+    }
+  ];
+
   return (
     <section className="skills-section" id="skills">
       <div className="skills-container">
-        <h1 className="skills-title">Skills</h1>
+        <h1 className="skills-title fade-in-down">Skills</h1>
 
         <div className="skills-grid">
-
-          {/* Frontend */}
-          <div className="skill-card">
-            <div className="skill-icon"><FaGlobe /></div>
-            <h2>Frontend</h2>
-            <ul>
-              <li>JavaScript</li>
-              <li>React.js</li>
-              <li>Redux</li>
-              <li>Tailwind CSS</li>
-              <li>Responsive UI Design</li>
-            </ul>
-          </div>
-
-          {/* Backend */}
-          <div className="skill-card">
-            <div className="skill-icon"><FaCogs /></div>
-            <h2>Backend</h2>
-            <ul>
-              <li>Java</li>
-              <li>Spring Boot</li>
-              <li>REST APIs</li>
-            </ul>
-          </div>
-
-          {/* Database */}
-          <div className="skill-card">
-            <div className="skill-icon"><FaDatabase /></div>
-            <h2>Database</h2>
-            <ul>
-              <li>MySQL</li>
-              <li>MongoDB</li>
-            </ul>
-          </div>
-
-          {/* Tools & Others */}
-          <div className="skill-card">
-            <div className="skill-icon"><FaTools /></div>
-            <h2>Tools & Others</h2>
-            <ul>
-              <li>Git & GitHub</li>
-              <li>VS Code</li>
-              <li>GenAI</li>
-              <li>Clerk</li>
-              <li>Figma</li>
-            </ul>
-          </div>
-
+          {skillsData.map((skill, index) => {
+            const IconComponent = skill.icon;
+            return (
+              <div
+                key={skill.id}
+                className={`skill-card fade-in-up ${hoveredCard === skill.id ? "active-card" : ""} ${selectedCard === skill.id ? "selected" : ""}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onMouseEnter={() => setHoveredCard(skill.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => setSelectedCard(selectedCard === skill.id ? null : skill.id)}
+              >
+                <div className="skill-icon-wrapper">
+                  <div className="skill-icon">
+                    <IconComponent />
+                  </div>
+                </div>
+                <h2>{skill.title}</h2>
+                <ul className="skill-list">
+                  {skill.skills.map((item, idx) => (
+                    <li key={idx} style={{ animationDelay: `${idx * 0.05}s` }} className="skill-item">
+                      <span className="skill-dot"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

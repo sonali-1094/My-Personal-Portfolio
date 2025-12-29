@@ -20,9 +20,34 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: #000;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  max-width: 80px;
+  border-radius: 8px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #363133, #292828);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-links {
