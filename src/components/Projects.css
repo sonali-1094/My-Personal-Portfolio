@@ -1,36 +1,47 @@
-/* ===== FONT IMPORT ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* ============================= */
+/* FONT IMPORT */
+/* ============================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-/* ===== Projects Section ===== */
+/* ============================= */
+/* PROJECTS SECTION */
+/* ============================= */
+
 .projects-section {
-  padding: 80px 0;
-  background-color: white;
-  font-family: 'Inter', sans-serif;
+  padding: 5rem 0;
+  background-color: #ffffff;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 .projects-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 .projects-title {
   text-align: center;
-  font-size: 2.6rem;
+  font-size: clamp(2rem, 4vw, 2.6rem);
   margin-bottom: 4rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: #0f172a;
 }
 
-/* ===== Case Studies Wrapper ===== */
+/* ============================= */
+/* CASE STUDIES WRAPPER */
+/* ============================= */
+
 .case-studies {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
 }
 
-/* ===== Individual Case Study ===== */
+/* ============================= */
+/* INDIVIDUAL CASE STUDY */
+/* ============================= */
+
 .case-study {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -48,7 +59,10 @@
   direction: ltr;
 }
 
-/* ===== Image ===== */
+/* ============================= */
+/* IMAGE */
+/* ============================= */
+
 .case-image {
   display: flex;
   justify-content: center;
@@ -59,19 +73,24 @@
 .case-image img {
   width: 100%;
   max-width: 540px;
-  height: 400px;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   border-radius: 14px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* Image Hover Zoom + Glow */
+/* Hover Zoom (Desktop only) */
 .case-study:hover .case-image img {
   transform: scale(1.06);
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
 }
 
-/* ===== Content ===== */
+/* ============================= */
+/* CONTENT */
+/* ============================= */
+
 .case-content {
   transition: transform 0.3s ease;
 }
@@ -81,7 +100,7 @@
 }
 
 .case-content h2 {
-  font-size: 1.85rem;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
   margin-bottom: 0.4rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -107,7 +126,10 @@
   color: #334155;
 }
 
-/* ===== Key Results ===== */
+/* ============================= */
+/* KEY RESULTS */
+/* ============================= */
+
 .case-content ul {
   margin-left: 1.1rem;
   margin-bottom: 0.8rem;
@@ -120,7 +142,10 @@
   line-height: 1.45;
 }
 
-/* ===== Tech Stack Pills ===== */
+/* ============================= */
+/* TECH STACK */
+/* ============================= */
+
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -145,7 +170,10 @@
   transform: translateY(-2px);
 }
 
-/* ===== Project Link ===== */
+/* ============================= */
+/* PROJECT LINK */
+/* ============================= */
+
 .case-link {
   display: inline-flex;
   align-items: center;
@@ -161,28 +189,39 @@
   gap: 0.7rem;
 }
 
-/* ===== Responsive ===== */
+/* ============================= */
+/* TABLET & MOBILE */
+/* ============================= */
+
 @media (max-width: 900px) {
-  .projects-title {
-    font-size: 2.2rem;
-  }
-
-  .case-content h2 {
-    font-size: 1.6rem;
-  }
-
-  .case-desc {
-    font-size: 0.9rem;
-  }
-
   .case-study,
   .case-study.reverse {
     grid-template-columns: 1fr;
-    gap: 1.4rem;
+    gap: 1.6rem;
     direction: ltr;
   }
 
-  .case-image img {
+  .case-desc {
     max-width: 100%;
+  }
+}
+
+/* ============================= */
+/* SMALL DEVICES */
+/* ============================= */
+
+@media (max-width: 576px) {
+  .projects-section {
+    padding: 4rem 0;
+  }
+
+  .projects-title {
+    margin-bottom: 3rem;
+  }
+
+  /* Disable hover jump on mobile */
+  .case-study:hover .case-content,
+  .case-study:hover .case-image img {
+    transform: none;
   }
 }

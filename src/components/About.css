@@ -1,4 +1,7 @@
-/* About Section Modern UI - Enhanced */
+/* ============================= */
+/* ABOUT SECTION – MODERN UI */
+/* FULL RESPONSIVE & COMPATIBLE */
+/* ============================= */
 
 .about-section {
   width: 100%;
@@ -16,10 +19,7 @@
 .about-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: transparent;
   pointer-events: none;
 }
@@ -34,7 +34,10 @@
   z-index: 1;
 }
 
-/* LEFT SECTION */
+/* ============================= */
+/* LEFT – IMAGE */
+/* ============================= */
+
 .about-photo {
   position: relative;
   flex-shrink: 0;
@@ -42,48 +45,60 @@
 
 .about-photo img {
   width: 420px;
-  border-radius: 18px;
-  object-fit: cover;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   height: 520px;
-  transition: all 0.3s ease;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 18px;
   border: 2px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-photo:hover img {
   transform: translateY(-10px);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* RIGHT SECTION */
+/* ============================= */
+/* RIGHT – CONTENT */
+/* ============================= */
+
 .about-content {
   flex: 1;
 }
 
 .about-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
-  background: black;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+
+  background: #000;
+
+  background-clip: text;              /* Standard */
+  -webkit-background-clip: text;      /* WebKit */
+
+  color: transparent;                 /* Firefox */
+  -webkit-text-fill-color: transparent; /* Safari */
 }
 
 .about-description {
   color: #555;
   line-height: 1.8;
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 1.2vw, 1.2rem);
   max-width: 600px;
   margin-bottom: 2.5rem;
   letter-spacing: 0.5px;
 }
 
-/* Tabs */
+/* ============================= */
+/* TABS */
+/* ============================= */
+
 .about-tabs {
   display: flex;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -96,16 +111,11 @@
   position: relative;
   padding: 8px 0;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .tab-btn:hover {
-  color: #000;
   transform: translateY(-2px);
-}
-
-.tab-btn.active {
-  color: #000;
 }
 
 .tab-btn.active::after {
@@ -115,7 +125,7 @@
   left: 0;
   height: 3px;
   width: 100%;
-  background: linear-gradient(90deg, #070707 0%, #222121 100%);
+  background: linear-gradient(90deg, #070707, #222121);
   border-radius: 3px;
   animation: slideIn 0.3s ease;
 }
@@ -129,14 +139,18 @@
   }
 }
 
-/* Tab Content */
+/* ============================= */
+/* TAB CONTENT */
+/* ============================= */
+
 .tab-content {
   animation: fadeInUp 0.4s ease;
 }
 
 .tab-content ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .tab-content li {
@@ -146,7 +160,7 @@
   line-height: 1.6;
   padding-left: 20px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .tab-content li::before {
@@ -155,43 +169,41 @@
   left: 0;
   color: #272223;
   font-weight: bold;
-  animation: bounceArrow 0.6s ease;
 }
 
 .tab-content li:hover {
-  color: #fff;
   transform: translateX(10px);
 }
 
 .tab-content span {
   color: #1b191a;
   font-weight: 700;
-  font-size: 1.15rem;
 }
 
+/* ============================= */
+/* EXPERIENCE DETAILS */
+/* ============================= */
+
 .exp-details {
-  text-align: left;
   margin-top: 0.8rem;
   padding-left: 20px;
   border-left: 2px solid #ff004f;
-  margin-left: 0;
 }
 
 .exp-details p {
   color: #666;
   font-size: 0.95rem;
-  margin: 0.5rem 0 0.8rem 0;
+  margin: 0.5rem 0 0.8rem;
   font-style: italic;
 }
 
 .exp-points {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
 }
 
 .exp-points li {
-  color: #666;
   font-size: 0.95rem;
   margin-bottom: 0.6rem;
   padding-left: 15px;
@@ -204,6 +216,10 @@
   left: 0;
   color: #ff004f;
 }
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
 
 @keyframes fadeInUp {
   from {
@@ -238,15 +254,6 @@
   }
 }
 
-@keyframes bounceArrow {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-5px);
-  }
-}
-
 .fade-in-left {
   animation: fadeInLeft 0.8s ease-out;
 }
@@ -259,8 +266,16 @@
   animation: fadeInUp 0.4s ease;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* ============================= */
+/* MOBILE – PHONES */
+/* ============================= */
+
+@media (max-width: 576px) {
+  .about-section {
+    padding: 4rem 1.2rem;
+    min-height: auto;
+  }
+
   .about-container {
     flex-direction: column;
     text-align: center;
@@ -268,30 +283,67 @@
   }
 
   .about-photo img {
-    width: 280px;
-    height: 380px;
-  }
-
-  .about-title {
-    font-size: 2.5rem;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
   }
 
   .about-description {
-    font-size: 1rem;
+    max-width: 100%;
   }
 
   .about-tabs {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   .tab-btn {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .tab-content li {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  /* Disable hover effects on mobile */
+  .about-photo:hover img,
+  .tab-content li:hover {
+    transform: none;
+  }
+}
+
+/* ============================= */
+/* TABLETS */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .about-photo img {
+    width: 300px;
+    height: auto;
+  }
+
+  .about-tabs {
+    justify-content: center;
+  }
+}
+
+/* ============================= */
+/* LARGE SCREENS */
+/* ============================= */
+
+@media (min-width: 1200px) {
+  .about-section {
+    padding: 7rem 2rem;
+  }
+
+  .about-photo img {
+    width: 450px;
+    height: 560px;
   }
 }

@@ -1,4 +1,6 @@
-/* Footer Section - Black & White Modern Layout */
+/* ============================= */
+/* FOOTER SECTION – MODERN B/W */
+/* ============================= */
 
 .footer-section {
   width: 100%;
@@ -10,6 +12,10 @@
   align-items: center;
 }
 
+/* ============================= */
+/* FOOTER CONTAINER */
+/* ============================= */
+
 .footer-container {
   max-width: 1200px;
   width: 100%;
@@ -17,114 +23,13 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-/* LEFT SIDE - Name + Roles */
-.footer-left {
-  max-width: 300px;
-}
+/* ============================= */
+/* LEFT – NAME & SOCIALS */
+/* ============================= */
 
-.footer-name {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.footer-role {
-  font-size: 1rem;
-  color: #cccccc;
-  margin: 0.2rem 0;
-}
-
-/* MIDDLE - Navigation Links */
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #d1d1d1;
-}
-
-/* RIGHT - Social Icons */
-.footer-socials .social-icons {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-icons a {
-  font-size: 1.6rem;
-  color: #ffffff;
-  border: 2px solid #fff;
-  padding: 0.5rem;
-  border-radius: 10px;
-  transition: 0.3s ease;
-}
-
-.social-icons a:hover {
-  background: #fff;
-  color: #000;
-  transform: translateY(-4px);
-}
-
-/* Bottom Copyright */
-.footer-bottom {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #444;
-  width: 100%;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .footer-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-}
-/* Footer Section */
-.footer-section {
-  width: 100%;
-  background: #000;
-  color: #fff;
-  padding: 3rem 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Three Column Layout */
-.footer-container {
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-/* LEFT SIDE */
 .footer-left {
   max-width: 300px;
 }
@@ -154,7 +59,7 @@
   border: 2px solid #fff;
   padding: 0.5rem;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .footer-social-icons a:hover {
@@ -163,7 +68,10 @@
   transform: translateY(-4px);
 }
 
-/* MIDDLE - SERVICES */
+/* ============================= */
+/* MIDDLE – SERVICES */
+/* ============================= */
+
 .footer-services {
   display: flex;
   flex-direction: column;
@@ -178,14 +86,18 @@
 .footer-services a {
   color: #ddd;
   text-decoration: none;
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .footer-services a:hover {
   color: #fff;
 }
 
-/* RIGHT - NAVIGATION */
+/* ============================= */
+/* RIGHT – NAV LINKS */
+/* ============================= */
+
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -200,14 +112,18 @@
 .footer-links a {
   color: #ddd;
   text-decoration: none;
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
   color: #fff;
 }
 
+/* ============================= */
 /* COPYRIGHT */
+/* ============================= */
+
 .footer-bottom {
   margin-top: 2.5rem;
   padding-top: 1rem;
@@ -218,15 +134,46 @@
   color: #ccc;
 }
 
-/* RESPONSIVE */
+/* ============================= */
+/* RESPONSIVE – TABLET & MOBILE */
+/* ============================= */
+
 @media (max-width: 900px) {
   .footer-container {
     flex-direction: column;
-    text-align: center;
     align-items: center;
+    text-align: center;
   }
 
   .footer-social-icons {
     justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-section {
+    padding: 2.5rem 1.5rem 1.2rem;
+  }
+
+  .footer-name {
+    font-size: 1.6rem;
+  }
+
+  .footer-role {
+    font-size: 0.95rem;
+  }
+
+  .footer-services h3,
+  .footer-links h3 {
+    font-size: 1.2rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+  }
+
+  /* Disable hover jump on mobile */
+  .footer-social-icons a:hover {
+    transform: none;
   }
 }

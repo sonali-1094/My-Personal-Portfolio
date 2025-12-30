@@ -1,8 +1,10 @@
-/* Navbar Black & White Theme */
+/* ============================= */
+/* NAVBAR – BLACK & WHITE THEME */
+/* ============================= */
 
 .navbar {
   width: 100%;
-  padding: 2rem 4rem;
+  padding: 1.5rem 4rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +12,10 @@
   border-bottom: 1px solid #e6e6e6;
   z-index: 999;
 }
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
 
 .nav-container {
   max-width: 1200px;
@@ -19,13 +25,17 @@
   align-items: center;
 }
 
+/* ============================= */
+/* LOGO */
+/* ============================= */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
   font-weight: 700;
   color: #000;
+  cursor: pointer;
 }
 
 .logo-img {
@@ -42,13 +52,19 @@
 }
 
 .logo span {
-  font-weight: 700;
   font-size: 1.3rem;
   background: linear-gradient(135deg, #363133, #292828);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
   background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
+
+/* ============================= */
+/* NAV LINKS – DESKTOP */
+/* ============================= */
 
 .nav-links {
   display: flex;
@@ -58,16 +74,36 @@
 .nav-links a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: #000;
-  transition: 0.2s ease;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
   color: #555;
 }
 
-/* Hamburger */
+/* Underline hover effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ============================= */
+/* HAMBURGER */
+/* ============================= */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -79,119 +115,66 @@
   width: 25px;
   height: 3px;
   background: #000;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-/* Mobile */
+/* ============================= */
+/* MOBILE NAV */
+/* ============================= */
+
 @media (max-width: 768px) {
+  .navbar {
+    padding: 1.2rem 1.5rem;
+  }
+
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 100%;
     right: 0;
-    background: #fff;
     width: 100%;
-    padding: 1rem;
+    background: #ffffff;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    padding: 1.5rem 0;
     border-bottom: 1px solid #e6e6e6;
-    display: none;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
   }
-.nav-links.open {
-    display: flex;
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
   }
 
   .hamburger {
     display: flex;
   }
+
+  /* Disable underline animation on mobile */
+  .nav-links a::after {
+    display: none;
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ============================= */
+/* EXTRA SMALL DEVICES */
+/* ============================= */
+
+@media (max-width: 480px) {
+  .logo span {
+    font-size: 1.1rem;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+}

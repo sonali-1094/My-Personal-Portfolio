@@ -1,5 +1,6 @@
-/* Skills Section - Modern UI */
-/* Skills Section - Enhanced Interactive UI */
+/* ============================= */
+/* SKILLS SECTION – MODERN UI */
+/* ============================= */
 
 .skills-section {
   width: 100%;
@@ -13,17 +14,6 @@
   overflow: hidden;
 }
 
-.skills-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  pointer-events: none;
-}
-
 .skills-container {
   max-width: 1200px;
   width: 100%;
@@ -32,14 +22,21 @@
   z-index: 1;
 }
 
+/* ============================= */
+/* TITLE */
+/* ============================= */
+
 .skills-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
   font-weight: 700;
   margin-bottom: 3.5rem;
   color: #000;
 }
 
-/* Grid */
+/* ============================= */
+/* GRID */
+/* ============================= */
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -47,39 +44,44 @@
   gap: 2.5rem;
 }
 
-/* Skill Card */
+/* ============================= */
+/* SKILL CARD */
+/* ============================= */
+
 .skill-card {
   background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: center;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
   border: 2px solid transparent;
   animation: slideUp 0.6s ease-out;
-  min-width: 320px;
-  flex: 1;
+  min-width: 300px;
   max-width: 400px;
+  flex: 1;
 }
 
 .skill-card::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(12, 12, 12, 0.1) 0%, transparent 70%);
+  inset: -50%;
+  background: radial-gradient(
+    circle,
+    rgba(12, 12, 12, 0.1) 0%,
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .skill-card:hover {
   transform: translateY(-15px) scale(1.05);
-  box-shadow: 0px 25px 60px rgba(29, 25, 26, 0.25), 0px 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 60px rgba(29, 25, 26, 0.25),
+              0 15px 35px rgba(0, 0, 0, 0.2);
   border-color: rgba(24, 21, 22, 0.3);
 }
 
@@ -87,14 +89,29 @@
   opacity: 1;
 }
 
-.skill-card.active-card {
-  transform: translateY(-15px) scale(1.05);
+/* ============================= */
+/* SELECTED / DISABLED STATE */
+/* ============================= */
+
+.skill-card.selected {
+  background: #e9e9e9;
+  border-color: #d0d0d0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: none;
 }
 
-/* Icon */
-.skill-icon-wrapper {
-  margin-bottom: 1.5rem;
+.skill-card.selected::before {
+  opacity: 0;
 }
+
+.skill-card.selected:hover {
+  transform: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================= */
+/* ICON */
+/* ============================= */
 
 .skill-icon {
   font-size: 3rem;
@@ -108,38 +125,13 @@
   justify-content: center;
   margin: 0 auto 1.5rem;
   transition: all 0.4s ease;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .skill-card:hover .skill-icon {
   transform: translateY(-8px) scale(1.1);
-  box-shadow: 0px 15px 40px rgba(27, 26, 26, 0.3);
+  box-shadow: 0 15px 40px rgba(27, 26, 26, 0.3);
   background: linear-gradient(135deg, #383234 0%, #1d1a1b 100%);
-}
-
-/* Heading */
-.skill-card h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #222;
-  transition: all 0.3s ease;
-}
-
-.skill-card:hover h2 {
-  color: #302d2e;
-}
-
-/* Selected state: gray out and remove pink accents */
-.skill-card.selected {
-  background: #e9e9e9;
-  border-color: #d0d0d0;
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-  transform: none;
-}
-
-.skill-card.selected::before {
-  opacity: 0;
 }
 
 .skill-card.selected .skill-icon {
@@ -148,28 +140,30 @@
   transform: none;
 }
 
+/* ============================= */
+/* HEADING */
+/* ============================= */
+
+.skill-card h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover h2 {
+  color: #302d2e;
+}
+
 .skill-card.selected h2 {
   color: #666;
 }
 
-.skill-card.selected .skill-item {
-  color: #666;
-  transform: none;
-}
+/* ============================= */
+/* SKILL LIST */
+/* ============================= */
 
-.skill-card.selected .skill-dot {
-  background: #888;
-  box-shadow: none;
-}
-
-/* disable hover emphasis when selected */
-.skill-card.selected:hover {
-  transform: none;
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-  border-color: #d0d0d0;
-}
-
-/* List */
 .skill-list {
   list-style: none;
   padding: 0;
@@ -208,6 +202,18 @@
   box-shadow: 0 0 10px rgba(51, 47, 48, 0.5);
 }
 
+.skill-card.selected .skill-item,
+.skill-card.selected .skill-dot {
+  color: #666;
+  background: #888;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -230,29 +236,14 @@
   }
 }
 
-.fade-in-down {
-  animation: fadeInDown 0.8s ease-out;
-}
+/* ============================= */
+/* MOBILE & TABLET */
+/* ============================= */
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: slideUp 0.6s ease-out;
-}
-
-/* Mobile */
 @media (max-width: 768px) {
   .skills-section {
     padding: 4rem 1.5rem;
+    min-height: auto;
   }
 
   .skills-title {
@@ -261,7 +252,6 @@
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
@@ -281,5 +271,16 @@
 
   .skill-item {
     font-size: 1rem;
+  }
+
+  /* Disable hover jump on mobile */
+  .skill-card:hover {
+    transform: none;
+  }
+
+  .skill-card:hover .skill-icon,
+  .skill-card:hover .skill-item,
+  .skill-card:hover .skill-dot {
+    transform: none;
   }
 }
