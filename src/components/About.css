@@ -270,9 +270,9 @@
 /* MOBILE – PHONES */
 /* ============================= */
 
-@media (max-width: 576px) {
+@media (max-width: 640px) {
   .about-section {
-    padding: 4rem 1.2rem;
+    padding: 3rem 1rem;
     min-height: auto;
   }
 
@@ -280,25 +280,42 @@
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+    align-items: center;
+  }
+
+  .about-photo {
+    width: 100%;
   }
 
   .about-photo img {
     width: 100%;
-    max-width: 260px;
+    max-width: 300px;
     height: auto;
+    max-height: 400px;
+  }
+
+  .about-content {
+    width: 100%;
+  }
+
+  .about-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
 
   .about-description {
     max-width: 100%;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
   }
 
   .about-tabs {
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .tab-btn {
     font-size: 1rem;
+    padding: 6px 0;
   }
 
   .tab-content li {
@@ -306,8 +323,7 @@
   }
 
   /* Disable hover effects on mobile */
-  .about-photo:hover img,
-  .tab-content li:hover {
+  .about-photo:hover img {
     transform: none;
   }
 }
@@ -316,16 +332,25 @@
 /* TABLETS */
 /* ============================= */
 
-@media (max-width: 768px) {
+@media (min-width: 641px) and (max-width: 1024px) {
+  .about-section {
+    padding: 4rem 1.5rem;
+  }
+
   .about-container {
     flex-direction: column;
     gap: 2.5rem;
-    text-align: center;
+    align-items: center;
   }
 
   .about-photo img {
-    width: 300px;
+    width: 100%;
+    max-width: 350px;
     height: auto;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 4vw, 3rem);
   }
 
   .about-tabs {
@@ -337,13 +362,13 @@
 /* LARGE SCREENS */
 /* ============================= */
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .about-section {
     padding: 7rem 2rem;
   }
 
   .about-photo img {
-    width: 450px;
-    height: 560px;
+    width: 420px;
+    height: 520px;
   }
 }

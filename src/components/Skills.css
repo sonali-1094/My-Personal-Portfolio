@@ -240,23 +240,83 @@
 /* MOBILE & TABLET */
 /* ============================= */
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+  .skills-section {
+    padding: 3rem 1rem;
+    min-height: auto;
+  }
+
+  .skills-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .skills-grid {
+    gap: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skill-card {
+    padding: 1.8rem 1.5rem;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .skill-item {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Disable hover jump on mobile */
+  .skill-card:hover {
+    transform: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .skill-card:hover .skill-icon,
+  .skill-card:hover .skill-item,
+  .skill-card:hover .skill-dot {
+    transform: none;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
   .skills-section {
     padding: 4rem 1.5rem;
     min-height: auto;
   }
 
   .skills-title {
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 3rem;
   }
 
   .skills-grid {
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .skill-card {
     padding: 2rem 1.5rem;
+    min-width: 280px;
+    max-width: 350px;
   }
 
   .skill-icon {
@@ -268,19 +328,14 @@
   .skill-card h2 {
     font-size: 1.5rem;
   }
+}
 
-  .skill-item {
-    font-size: 1rem;
-  }
+/* ============================= */
+/* LARGE SCREENS */
+/* ============================= */
 
-  /* Disable hover jump on mobile */
-  .skill-card:hover {
-    transform: none;
-  }
-
-  .skill-card:hover .skill-icon,
-  .skill-card:hover .skill-item,
-  .skill-card:hover .skill-dot {
-    transform: none;
+@media (min-width: 1025px) {
+  .skills-section {
+    padding: 6rem 2rem;
   }
 }
