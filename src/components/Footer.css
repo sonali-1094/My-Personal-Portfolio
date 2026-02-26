@@ -6,7 +6,7 @@
   width: 100%;
   background: #000;
   color: #fff;
-  padding: 3rem 2rem 1.5rem;
+  padding: 2.2rem 1.25rem 1.1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 1.6rem;
 }
 
 /* ============================= */
@@ -125,8 +125,8 @@
 /* ============================= */
 
 .footer-bottom {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
+  margin-top: 1.4rem;
+  padding-top: 0.75rem;
   border-top: 1px solid #444;
   width: 100%;
   text-align: center;
@@ -226,10 +226,10 @@
 
 @media (min-width: 1025px) {
   .footer-section {
-    padding: 3rem 2rem 1.5rem;
+    padding: 2.3rem 1.25rem 1rem;
   }
 
   .footer-container {
-    gap: 2.5rem;
+    gap: 1.8rem;
   }
 }

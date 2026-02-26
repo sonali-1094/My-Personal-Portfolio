@@ -1,61 +1,68 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 
-export default function Navbar() {
+const NAV_ITEMS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About Me" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "services", label: "Services" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" }
+];
+
+export default function Navbar({ activeSection = "home", onNavigate }) {
   const [open, setOpen] = useState(false);
 
-  // Smooth scrolling
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-  // Active link highlight on scroll
-  useEffect(() => {
-    const sections = document.querySelectorAll("section, header");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navLinks.forEach((link) => link.classList.remove("active"));
-            const activeLink = document.querySelector(
-              `.nav-links a[href='#${entry.target.id}']`
-            );
-            if (activeLink) activeLink.classList.add("active");
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    sections.forEach((sec) => observer.observe(sec));
-
-    return () => observer.disconnect();
-  }, []);
+  const handleNavClick = (event, sectionId) => {
+    event.preventDefault();
+    setOpen(false);
+    onNavigate?.(sectionId);
+  };
 
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="logo">
-          <img src="/logo.png" alt="Sonali Patil Logo" className="logo-img" />
+        <a href="#home" className="logo" onClick={(event) => handleNavClick(event, "home")}>
+          <img src="/logo.webp" alt="Sonali Patil Logo" className="logo-img" />
           <span>PORTFOLIO</span>
-        </div>
+        </a>
 
         <div className={`nav-links ${open ? "open" : ""}`}>
-          <a href="#home">Home</a>
-          <a href="#about">About Me</a>
-          <a href="#skills">Skills</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={activeSection === item.id ? "active" : ""}
+              onClick={(event) => handleNavClick(event, item.id)}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
 
-        <div className="hamburger" onClick={() => setOpen(!open)}>
+        <button
+          type="button"
+          className="hamburger"
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((previous) => !previous)}
+        >
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </nav>
   );

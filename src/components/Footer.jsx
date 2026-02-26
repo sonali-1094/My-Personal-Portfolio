@@ -2,8 +2,11 @@ import React from "react";
 import "./Footer.css";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { trackEvent } from "../utils/analytics";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer-section" id="footer">
       <div className="footer-container">
@@ -16,10 +19,40 @@ export default function Footer() {
                        Crafting experiences, not just interfaces.</p>
 
           <div className="footer-social-icons">
-            <a href="https://github.com/sonali-1094" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/sonali-patil-190257288" target="_blank"><FaLinkedin /></a>
-            <a href="https://x.com/SonaliPatil018" target="_blank"><FaTwitter /></a>
-            <a href="mailto:sonalirpatil361@gmail.com"><FaEnvelope /></a>
+            <a
+              href="https://github.com/sonali-1094"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              onClick={() => trackEvent("social_click", { platform: "github" })}
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sonali-patil-190257288"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              onClick={() => trackEvent("social_click", { platform: "linkedin" })}
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://x.com/SonaliPatil018"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X profile"
+              onClick={() => trackEvent("social_click", { platform: "x" })}
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="mailto:sonalirpatil361@gmail.com"
+              aria-label="Send email"
+              onClick={() => trackEvent("social_click", { platform: "email" })}
+            >
+              <FaEnvelope />
+            </a>
           </div>
             <h3 className="footer-connect">Connect With Me </h3>
 
@@ -43,6 +76,7 @@ export default function Footer() {
 
           <a href="#home">Home</a>
           <a href="#about">About Me</a>
+          <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#services">Services</a>
           <a href="#projects">Projects</a>
@@ -53,7 +87,7 @@ export default function Footer() {
 
       {/* COPYRIGHT */}
       <div className="footer-bottom">
-        © 2025 Sonali Patil — All Rights Reserved
+        {`© ${currentYear} Sonali Patil - All Rights Reserved`}
       </div>
     </footer>
   );

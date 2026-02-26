@@ -1,0 +1,100 @@
+.about-section,
+.experience-section,
+.skills-section,
+.services-section,
+.projects-section,
+.contact-section {
+  background: transparent !important;
+}
+
+.about-container,
+.experience-container,
+.skills-container,
+.services-container,
+.projects-container,
+.contact-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.experience-title,
+.services-title,
+.projects-title,
+.contact-title,
+.contact-info h2,
+.case-content h2,
+.service-card h2,
+.experience-head h2 {
+  color: #f8fafc !important;
+}
+
+.experience-subtitle,
+.case-desc,
+.case-content ul li,
+.experience-meta,
+.experience-card li,
+.service-card p,
+.contact-info p,
+.contact-form p,
+.skills-subtitle {
+  color: #cbd5e1 !important;
+}
+
+.case-image img,
+.contact-info img {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.projects-search,
+.filter-chip,
+.tech-pill,
+.projects-toggle-btn,
+.info-item,
+.service-card,
+.experience-card,
+.contact-form,
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.filter-chip.active,
+.case-link,
+.info-item .icon,
+.service-icon,
+.contact-btn,
+.projects-toggle-btn:hover {
+  color: #00d4f7 !important;
+}
+
+.case-link,
+.contact-btn {
+  border-color: rgba(0, 212, 247, 0.45) !important;
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #00d4f7, #35e0ff) !important;
+  color: #02131a !important;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, #35e0ff, #00d4f7) !important;
+}
+
+@media (max-width: 768px) {
+  .about-container,
+  .experience-container,
+  .skills-container,
+  .services-container,
+  .projects-container,
+  .contact-container {
+    border-radius: 14px;
+  }
+}

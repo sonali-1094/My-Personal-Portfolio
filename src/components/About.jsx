@@ -10,16 +10,17 @@ export default function About() {
 
         {/* LEFT SIDE - IMAGE */}
         <div className="about-photo fade-in-left">
-          <img src="\sonali's pic.jpg" alt="Sonali Patil" />
+          <img src="/sonali's pic.webp" alt="Sonali Patil portrait" loading="lazy" decoding="async" />
         </div>
 
         {/* RIGHT SIDE - CONTENT */}
         <div className="about-content fade-in-right">
           <h1 className="about-title">About Me</h1>
           <p className="about-description">
-            I am a passionate Full Stack Developer who enjoys building modern,
-            responsive seeking opportunities to apply skills in real-world projects and interactive digital experiences. I love working with
-            React, Java, Spring Boot, and AI-powered tech.
+            I am a MERN stack developer focused on building modern, responsive,
+            and real-world web applications. I enjoy creating clean user experiences
+            with React and developing scalable backend systems with Node.js, Express,
+            and MongoDB.
           </p>
 
           {/* TAB HEADINGS */}
@@ -29,13 +30,6 @@ export default function About() {
               onClick={() => setActiveTab("skills")}
             >
               Skills
-            </button>
-
-            <button 
-              className={`tab-btn ${activeTab === "experience" ? "active" : ""}`}
-              onClick={() => setActiveTab("experience")}
-            >
-              Experience
             </button>
 
             <button 
@@ -50,34 +44,29 @@ export default function About() {
           <div className="tab-content fade-in">
             {activeTab === "skills" && (
               <ul>
-                <li><span>UI/UX</span> – Designing Web/App interfaces</li>
-                <li><span>Web Development</span> – MERN, Java Spring Boot</li>
-                <li><span>App Development</span> – Building Mobile Apps</li>
-                <li><span>AI Tools</span> – GenAI, NLP</li>
-              </ul>
-            )}
-
-            {activeTab === "experience" && (
-              <ul>
                 <li>
-                  <span>Software Developer Intern</span> – Dec 2025 – Present
-                  <div className="exp-details">
-                    <p>Nexus Solution • Remote</p>
-                    <ul className="exp-points">
-                      <li>Built responsive UI using React.js and modern CSS</li>
-                      <li>Integrated frontend with backend REST APIs</li>
-                      <li>Worked in Agile workflow using Git</li>
-                    </ul>
-                  </div>
+                  <span>Technical Skills</span> – Java, JavaScript, React.js, MongoDB, MySQL, Git & GitHub, REST APIs, DSA
+                </li>
+                <li>
+                  <span>Soft Skills</span> – Communication, Teamwork, Problem-Solving, Time Management, Leadership
+                </li>
+                <li>
+                  <span>Languages</span> – English, Marathi, Kannada, Hindi
                 </li>
               </ul>
             )}
 
             {activeTab === "education" && (
               <ul>
-                <li><span>B.E. in Electronics & Computer Engineering</span></li>
-                <li>– Savitribai Phule Pune University</li>
-                <li>– Java, DSA, Full Stack</li>
+                <li><span>Zeal College of Engineering and Research, Pune</span></li>
+                <li><span>Expected Graduation</span> – 2027</li>
+                <li>
+                  <span>Bachelor of Engineering in Electronics and Computer Engineering</span> – Honours in Artificial Intelligence and Machine Learning (AI & ML)
+                </li>
+                <li><span>CGPA</span> – 8/10</li>
+                <li>
+                  <span>Relevant Coursework</span> – Object-Oriented Programming, Operating Systems, Data Structures and Algorithms
+                </li>
               </ul>
             )}
           </div>

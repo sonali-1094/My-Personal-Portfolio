@@ -1,180 +1,50 @@
-/* ============================= */
-/* GLOBAL RESET & BASE STYLES */
-/* ============================= */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px circle at 10% 10%, rgba(0, 212, 247, 0.1), transparent 45%),
+    radial-gradient(900px circle at 90% 75%, rgba(139, 63, 204, 0.12), transparent 50%),
+    #090b10;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #ffffff;
-  color: #000;
-  line-height: 1.6;
-  overflow-x: hidden;
-  font-size: 16px;
-}
-
-/* ============================= */
-/* ROOT WRAPPER */
-/* ============================= */
-
-#root {
-  max-width: 1280px;
+.section-stage {
+  width: min(1120px, 100% - 1.4rem);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 0 2rem;
+  min-height: calc(100vh - 80px);
+  display: flex;
 }
 
-/* Tablet */
-@media (min-width: 640px) {
-  #root {
-    padding: 1.5rem;
+.section-shell {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  animation: sectionReveal 0.38s ease;
+}
+
+.section-shell > section,
+.section-shell > header {
+  scroll-margin-top: 90px;
+  min-height: calc(100vh - 80px);
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-
-/* Desktop */
-@media (min-width: 1024px) {
-  #root {
-    padding: 2rem;
-  }
-}
-
-/* ============================= */
-/* LINKS */
-/* ============================= */
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-a:hover {
-  opacity: 0.85;
-}
-
-a:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* ============================= */
-/* BUTTON RESET */
-/* ============================= */
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  background: none;
-  border: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-button:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* ============================= */
-/* IMAGES */
-/* ============================= */
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ============================= */
-/* SELECTION */
-/* ============================= */
-
-::selection {
-  background: #000;
-  color: #fff;
-}
-
-/* ============================= */
-/* SCROLLBAR (OPTIONAL) */
-/* ============================= */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #000;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #333;
-}
-
-/* ============================= */
-/* UTILITY CLASSES */
-/* ============================= */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-/* ============================= */
-/* ACCESSIBILITY */
-/* ============================= */
-
-:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 3px;
-}
-
-/* ============================= */
-/* REDUCED MOTION */
-/* ============================= */
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* ============================= */
-/* MOBILE-SPECIFIC FIXES */
-/* ============================= */
 
 @media (max-width: 640px) {
-  body {
-    font-size: 14px;
+  .section-stage {
+    width: calc(100% - 0.8rem);
+    padding-top: 0.6rem;
   }
 
-  button,
-  a {
-    min-height: 48px;
+  .section-shell {
+    border-radius: 12px;
   }
 }
