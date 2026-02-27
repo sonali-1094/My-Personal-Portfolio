@@ -1,20 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./About.css";
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState("skills");
-
   return (
     <section className="about-section" id="about">
       <div className="about-container">
-
-        {/* LEFT SIDE - IMAGE */}
-        <div className="about-photo fade-in-left">
-          <img src="/sonali's pic.webp" alt="Sonali Patil portrait" loading="lazy" decoding="async" />
-        </div>
-
-        {/* RIGHT SIDE - CONTENT */}
-        <div className="about-content fade-in-right">
+        <div className="about-left">
           <h1 className="about-title">About Me</h1>
           <p className="about-description">
             I am a MERN stack developer focused on building modern, responsive,
@@ -23,55 +14,60 @@ export default function About() {
             and MongoDB.
           </p>
 
-          {/* TAB HEADINGS */}
-          <div className="about-tabs">
-            <button 
-              className={`tab-btn ${activeTab === "skills" ? "active" : ""}`}
-              onClick={() => setActiveTab("skills")}
-            >
-              Skills
-            </button>
-
-            <button 
-              className={`tab-btn ${activeTab === "education" ? "active" : ""}`}
-              onClick={() => setActiveTab("education")}
-            >
-              Education
-            </button>
-          </div>
-
-          {/* TAB CONTENT */}
-          <div className="tab-content fade-in">
-            {activeTab === "skills" && (
-              <ul>
-                <li>
-                  <span>Technical Skills</span> – Java, JavaScript, React.js, MongoDB, MySQL, Git & GitHub, REST APIs, DSA
-                </li>
-                <li>
-                  <span>Soft Skills</span> – Communication, Teamwork, Problem-Solving, Time Management, Leadership
-                </li>
-                <li>
-                  <span>Languages</span> – English, Marathi, Kannada, Hindi
-                </li>
-              </ul>
-            )}
-
-            {activeTab === "education" && (
-              <ul>
-                <li><span>Zeal College of Engineering and Research, Pune</span></li>
-                <li><span>Expected Graduation</span> – 2027</li>
-                <li>
-                  <span>Bachelor of Engineering in Electronics and Computer Engineering</span> – Honours in Artificial Intelligence and Machine Learning (AI & ML)
-                </li>
-                <li><span>CGPA</span> – 8/10</li>
-                <li>
-                  <span>Relevant Coursework</span> – Object-Oriented Programming, Operating Systems, Data Structures and Algorithms
-                </li>
-              </ul>
-            )}
+          <div className="skills-card">
+            <h2 className="skills-title">Skills</h2>
+            <ul className="skills-list">
+              <li>
+                <span>Technical Skills</span> - Java, JavaScript, React.js, MongoDB,
+                MySQL, Git and GitHub, REST APIs, DSA
+              </li>
+              <li>
+                <span>Soft Skills</span> - Communication, Teamwork, Problem-Solving,
+                Time Management, Leadership
+              </li>
+              <li>
+                <span>Languages</span> - English, Marathi, Kannada, Hindi
+              </li>
+            </ul>
           </div>
         </div>
 
+        <div className="about-right">
+          <div className="education-badge">
+            <span className="badge-icon">&#127891;</span>
+            <span className="badge-text">EDUCATION</span>
+          </div>
+
+          <div className="education-timeline">
+            <article className="timeline-item">
+              <div className="timeline-dot">&#127891;</div>
+              <div className="timeline-card">
+                <h3>Zeal College of Engineering and Research, Pune</h3>
+                <p>Bachelor of Engineering in Electronics and Computer Engineering</p>
+                <p>Honours in Artificial Intelligence and Machine Learning (AI & ML)</p>
+                <p>2023 - Expected Graduation - 2027</p>
+              </div>
+            </article>
+
+            <article className="timeline-item">
+              <div className="timeline-dot">&#127891;</div>
+              <div className="timeline-card">
+                <h3>Higher Secondary: Jath High School and Jr. College, Jath</h3>
+                <p>12th Grade </p>
+                <p>2022 - Passed</p>
+              </div>
+            </article>
+
+            <article className="timeline-item">
+              <div className="timeline-dot">&#127891;</div>
+              <div className="timeline-card">
+                <h3>Secondary: S V R D Highschool, Shegaon</h3>
+                <p>10th Grade</p>
+                <p>2020 - Passed</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
   );

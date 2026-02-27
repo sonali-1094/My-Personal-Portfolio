@@ -17,19 +17,19 @@ export default function Skills() {
       id: 2,
       icon: FaCogs,
       title: "Backend",
-      skills: ["Java", "Spring Boot", "REST APIs"]
+      skills: ["Java", "Nodejs","Expressjs", "REST APIs"]
     },
     {
       id: 3,
       icon: FaDatabase,
       title: "Database",
-      skills: ["MySQL", "MongoDB"]
+      skills: ["MySQL", "MongoDB"," PostgreSQL"]
     },
     {
       id: 4,
       icon: FaTools,
       title: "Tools & Others",
-      skills: ["Git & GitHub", "VS Code", "GenAI", "Clerk", "Figma"]
+      skills: ["Git & GitHub", "VS Code", "GenAI", "Clerk", "Figma","Vercel"]
     }
   ];
 

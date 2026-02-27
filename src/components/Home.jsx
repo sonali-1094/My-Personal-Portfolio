@@ -71,11 +71,11 @@ export default function Home({ onNavigate }) {
 
       <div className="home-content">
         <div className="text-section">
-          <p className="intro-pill fade-in-down">Open to internships and freelance projects</p>
+          <p className="intro-pill fade-in-down">Open to internships and Jobs</p>
           <h1 className="fade-in-down">
             Hello, I am <span className="highlight">Sonali Patil</span>
             <br />
-            <span className="subtitle">Full Stack Developer</span>
+            <span className="subtitle">MERN Stack Developer</span>
           </h1>
 
           <h2 className="tagline fade-in-up">
