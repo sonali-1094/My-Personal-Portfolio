@@ -1,15 +1,17 @@
 import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
-import emailjs from "emailjs-com";
 import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { trackEvent } from "../utils/analytics";
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
 const MIN_SUBMIT_INTERVAL_MS = 20_000;
-const DIRECT_CONTACT_EMAIL = "sonalirpatil361@gmail.com";
+const DIRECT_CONTACT_EMAIL = "sonalirpatil109@gmail.com";
+const EMAILJS_CONFIG_ERROR_MESSAGE =
+  "Contact form setup needs a valid EmailJS public key. Please use the email option below.";
 
 export default function Contact() {
   const form = useRef();
@@ -26,11 +28,17 @@ export default function Contact() {
     EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY
   );
 
-  const buildMailtoHref = () => {
+  const getFormValues = () => {
     const formData = form.current ? new FormData(form.current) : null;
-    const name = formData?.get("user_name")?.toString().trim() || "";
-    const email = formData?.get("user_email")?.toString().trim() || "";
-    const message = formData?.get("message")?.toString().trim() || "";
+    return {
+      name: formData?.get("user_name")?.toString().trim() || "",
+      email: formData?.get("user_email")?.toString().trim() || "",
+      message: formData?.get("message")?.toString().trim() || "",
+    };
+  };
+
+  const buildMailtoHref = () => {
+    const { name, email, message } = getFormValues();
     const subject = `Portfolio inquiry${name ? ` from ${name}` : ""}`;
     const body = [`Name: ${name || "-"}`, `Email: ${email || "-"}`, "", message || ""]
       .join("\n")
@@ -39,7 +47,7 @@ export default function Contact() {
     return `mailto:${DIRECT_CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     if (!isEmailConfigured) {
@@ -70,42 +78,51 @@ export default function Contact() {
     setStatusType("");
     setFallbackMailtoHref("");
 
-    emailjs
-      .sendForm(
+    try {
+      const { name, email, message } = getFormValues();
+      await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        form.current,
-        EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        form.current.reset();
-        setBotField("");
-        setLastSubmitAt(now);
-        setSubmitted(true);
-        setStatusType("success");
-        setStatusMessage("Message sent successfully.");
-        trackEvent("contact_submit_success", { source: "contact_form" });
-        setTimeout(() => setSubmitted(false), 3000);
-      })
-      .catch((error) => {
-        const errorReason = error?.text || error?.message || "Unknown error";
-        const isAccountError = /account not found/i.test(errorReason);
-        console.error("EmailJS send error:", error);
-        setStatusType("error");
-        setStatusMessage(
-          isAccountError
-            ? "Automatic form sending is unavailable right now. Please use the email option below."
-            : `Failed to send message: ${errorReason}. Please use the email option below.`
-        );
-        setFallbackMailtoHref(buildMailtoHref());
-        trackEvent("contact_submit_error", {
-          source: "contact_form",
-          reason: errorReason,
-        });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
+        {
+          user_name: name,
+          user_email: email,
+          message,
+          from_name: name,
+          from_email: email,
+          reply_to: email,
+          to_email: DIRECT_CONTACT_EMAIL,
+        },
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        }
+      );
+
+      form.current.reset();
+      setBotField("");
+      setLastSubmitAt(now);
+      setSubmitted(true);
+      setStatusType("success");
+      setStatusMessage("Message sent successfully.");
+      trackEvent("contact_submit_success", { source: "contact_form" });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      const errorReason = error?.text || error?.message || "Unknown error";
+      const isPublicKeyError = /public key/i.test(errorReason);
+      console.error("EmailJS send error:", error);
+      setStatusType("error");
+      setStatusMessage(
+        isPublicKeyError
+          ? EMAILJS_CONFIG_ERROR_MESSAGE
+          : `Message could not be sent: ${errorReason}. Please use the email option below.`
+      );
+      setFallbackMailtoHref(buildMailtoHref());
+      trackEvent("contact_submit_error", {
+        source: "contact_form",
+        reason: errorReason,
       });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -128,7 +145,7 @@ export default function Contact() {
               <FaEnvelope className="icon" />
               <div>
                 <h3>Email Me</h3>
-                <p>sonalirpatil361@gmail.com</p>
+                <p>sonalirpatil109@gmail.com</p>
               </div>
             </div>
 
@@ -242,7 +259,7 @@ export default function Contact() {
               <span>GitHub</span>
             </a>
             <a
-              href="mailto:sonalirpatil361@gmail.com"
+              href="mailto:sonalirpatil109@gmail.com"
               aria-label="Email Sonali Patil"
               onClick={() => trackEvent("social_click", { platform: "email" })}
             >
