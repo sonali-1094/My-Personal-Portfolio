@@ -1,23 +1,21 @@
 .app-shell {
   min-height: 100vh;
-  background:
-    radial-gradient(900px circle at 10% 10%, rgba(0, 212, 247, 0.1), transparent 45%),
-    radial-gradient(900px circle at 90% 75%, rgba(139, 63, 204, 0.12), transparent 50%),
-    #090b10;
+  background: var(--page-bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .section-stage {
   width: min(1120px, 100% - 1.4rem);
   margin: 0 auto;
   padding: 1rem 0 2rem;
-  min-height: calc(100vh - 80px);
-  display: flex;
+  display: block;
 }
 
 .section-shell {
   width: 100%;
   border-radius: 18px;
-  overflow: hidden;
+  overflow: visible;
   animation: sectionReveal 0.38s ease;
 }
 
@@ -25,6 +23,13 @@
 .section-shell > header {
   scroll-margin-top: 90px;
   min-height: calc(100vh - 80px);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.section-shell > section:last-child,
+.section-shell > header:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes sectionReveal {

@@ -1,17 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import About from "../About";
 
-test("switches between skills and education tabs", async () => {
-  const user = userEvent.setup();
+test("renders the redesigned about highlights and informative sections", () => {
   render(<About />);
 
-  expect(screen.getByText(/technical skills/i)).toBeInTheDocument();
-  expect(screen.queryByText(/zeal college of engineering and research/i)).not.toBeInTheDocument();
-
-  await user.click(screen.getByRole("button", { name: /education/i }));
+  expect(screen.getByText(/i build simple, useful web experiences/i)).toBeInTheDocument();
+  expect(screen.getByText(/projects built/i)).toBeInTheDocument();
+  expect(screen.getByText(/current focus/i)).toBeInTheDocument();
+  expect(screen.getByText(/unique feature ideas/i)).toBeInTheDocument();
   expect(screen.getByText(/zeal college of engineering and research, pune/i)).toBeInTheDocument();
-
-  await user.click(screen.getByRole("button", { name: /skills/i }));
-  expect(screen.getByText(/languages/i)).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: /start a conversation/i })).toHaveAttribute("href", "#contact");
 });

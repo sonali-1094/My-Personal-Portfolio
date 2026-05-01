@@ -1,261 +1,348 @@
 .about-section {
-  width: 100%;
-  padding: var(--section-space) 1.25rem;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(0, 173, 239, 0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255, 0, 128, 0.06), transparent 45%),
-    #030611;
+  inline-size: 100%;
+  padding: clamp(2rem, 4vw, 3.2rem);
+  background: transparent;
 }
 
 .about-container {
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: 2rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+  gap: 1.25rem;
+  max-inline-size: 1100px;
+  margin: 0 auto;
 }
 
-.about-left {
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 16px;
-  background: rgba(2, 20, 34, 0.55);
-  padding: 1.25rem 1.2rem;
+.about-hero,
+.about-profile-card,
+.about-panel,
+.strength-card {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.about-hero {
+  min-block-size: 100%;
+  border-radius: 18px;
+  padding: clamp(1.3rem, 3vw, 2.35rem);
+}
+
+.about-eyebrow {
+  inline-size: fit-content;
+  margin-block-end: 0.9rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 0.38rem 0.78rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .about-title {
-  margin: 0 0 0.8rem;
+  max-inline-size: 720px;
+  margin: 0;
+  color: var(--heading);
   font-family: "Sora", "Space Grotesk", sans-serif;
-  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-  font-weight: 800;
-  color: #e8faff;
+  font-size: clamp(2rem, 4.6vw, 3.45rem);
+  line-height: 1.08;
 }
 
 .about-description {
-  margin: 0 0 1rem;
-  color: #cbd5e1;
-  line-height: 1.75;
-  font-size: 0.92rem;
+  max-inline-size: 660px;
+  margin: 1rem 0 0;
+  color: var(--text-muted);
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  line-height: 1.8;
 }
 
-.skills-card {
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.18);
-  padding: 1rem;
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-block-start: 1.45rem;
 }
 
-.skills-title {
-  margin: 0 0 0.7rem;
+.highlight-card {
+  min-block-size: 96px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 0.9rem;
+  background: var(--panel-strong);
+}
+
+.highlight-card strong {
+  display: block;
+  color: var(--accent-strong);
   font-family: "Sora", "Space Grotesk", sans-serif;
-  font-size: 1.08rem;
-  color: #10dcff;
-}
-
-.skills-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skills-list li {
-  position: relative;
-  color: #cfdae7;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0.6rem;
-  padding-left: 1rem;
-}
-
-.skills-list li:last-child {
-  margin-bottom: 0;
-}
-
-.skills-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #00d7ff;
-}
-
-.skills-list span {
-  color: #f5fbff;
-  font-weight: 700;
-}
-
-.about-right {
-  width: 100%;
-}
-
-.education-badge {
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.8rem 1.1rem;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  background: rgba(2, 20, 34, 0.7);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
-  margin-bottom: 1.8rem;
-}
-
-.badge-icon {
-  font-size: 1.25rem;
-  color: #00d7ff;
+  font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1;
 }
 
-.badge-text {
+.highlight-card span {
+  display: block;
+  margin-block-start: 0.45rem;
+  color: var(--text);
+  font-size: 0.88rem;
+}
+
+.about-profile-card {
+  border-radius: 18px;
+  padding: clamp(1.2rem, 2.2vw, 1.65rem);
+  background: var(--panel-strong);
+}
+
+.profile-card-header {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.profile-icon,
+.strength-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 12px;
+  color: var(--button-text);
+  background: var(--accent-strong);
+}
+
+.profile-card-header p,
+.panel-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.profile-card-header h2,
+.about-panel h2,
+.strength-card h2 {
+  margin: 0;
+  color: var(--heading);
   font-family: "Sora", "Space Grotesk", sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  color: #e5fbff;
-  background: rgba(0, 212, 255, 0.2);
-  padding: 0.05rem 0.45rem;
 }
 
-.education-timeline {
+.profile-card-header h2 {
+  margin-block-start: 0.15rem;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.focus-list,
+.idea-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.focus-list li,
+.idea-list li {
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.focus-list li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  font-size: 0.94rem;
+}
+
+.focus-list svg {
+  flex: 0 0 auto;
+  margin-block-start: 0.2rem;
+  color: var(--accent-strong);
+}
+
+.about-strengths {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.strength-card {
+  border-radius: 14px;
+  padding: 1.1rem;
+}
+
+.strength-card h2 {
+  margin-block-start: 0.9rem;
+  font-size: 1.05rem;
+}
+
+.strength-card p {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.about-details-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-panel {
+  border-radius: 14px;
+  padding: 1.15rem;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-block-end: 1rem;
+}
+
+.panel-heading svg {
+  color: var(--accent-strong);
+  font-size: 1.15rem;
+}
+
+.about-panel h2 {
+  font-size: 1.12rem;
+}
+
+.skill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill-cloud span {
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 0.42rem 0.68rem;
+  color: var(--text);
+  background: var(--accent-soft);
+  font-size: 0.88rem;
+}
+
+.panel-note {
+  margin-block-start: 1rem;
+  line-height: 1.65;
+}
+
+.idea-list {
+  margin-block-start: 0;
+}
+
+.idea-list li {
   position: relative;
-  padding-left: 4.8rem;
+  padding-inline-start: 1.1rem;
+  font-size: 0.94rem;
 }
 
-.education-timeline::before {
+.idea-list li::before {
   content: "";
   position: absolute;
-  left: 1.45rem;
-  top: 0.2rem;
-  bottom: 0.2rem;
-  width: 3px;
-  border-radius: 99px;
-  background: linear-gradient(180deg, #00e7ff, #00b8df);
-  box-shadow: 0 0 12px rgba(0, 231, 255, 0.55);
+  inset-block-start: 0.65rem;
+  inset-inline-start: 0;
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: 999px;
+  background: var(--accent-strong);
 }
 
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
+.education-panel {
+  grid-column: span 1;
 }
 
-.timeline-item:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -4.35rem;
-  top: 1.1rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 214, 255, 0.45);
-  background: #031726;
+.education-list {
   display: grid;
-  place-items: center;
-  color: #00ddff;
-  font-size: 0.95rem;
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.45);
+  gap: 1rem;
 }
 
-.timeline-card {
-  border: 1px solid rgba(0, 212, 255, 0.8);
-  border-radius: 18px;
-  background: linear-gradient(140deg, rgba(2, 14, 30, 0.92), rgba(12, 7, 24, 0.9));
-  padding: 1.5rem 1.8rem;
-  box-shadow: inset 0 0 0 1px rgba(0, 212, 255, 0.08);
+.education-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
 }
 
-.timeline-card h3 {
-  margin: 0 0 0.8rem;
-  font-family: "Sora", "Space Grotesk", sans-serif;
-  font-size: clamp(1.05rem, 1.9vw, 1.55rem);
+.education-dot {
+  inline-size: 11px;
+  block-size: 11px;
+  margin-block-start: 0.4rem;
+  border-radius: 999px;
+  background: var(--accent-strong);
+  box-shadow: 0 0 0 6px var(--accent-soft);
+}
+
+.education-item h3 {
+  margin: 0;
+  color: var(--heading);
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+.education-item p,
+.education-item span,
+.availability-panel p {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.education-item span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.availability-panel {
+  background: var(--panel-strong);
+}
+
+.about-contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 44px;
+  margin-block-start: 1rem;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  color: var(--button-text);
+  background: var(--accent-strong);
   font-weight: 800;
-  color: #10dcff;
-  line-height: 1.3;
-}
-
-.timeline-card p {
-  margin: 0 0 0.65rem;
-  font-size: clamp(1rem, 1.35vw, 1.6rem);
-  font-weight: 600;
-  color: #cfdae7;
-  line-height: 1.45;
-}
-
-.timeline-card p:last-child {
-  margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
-  .about-container {
+  .about-container,
+  .about-strengths,
+  .about-details-grid {
     grid-template-columns: 1fr;
-  }
-
-  .badge-text {
-    font-size: 1.6rem;
-  }
-
-  .education-timeline {
-    padding-left: 3.8rem;
-  }
-
-  .timeline-dot {
-    left: -3.5rem;
-  }
-
-  .timeline-card {
-    padding: 1.2rem 1.25rem;
   }
 }
 
 @media (max-width: 640px) {
   .about-section {
-    padding: 2.4rem 1rem;
-  }
-
-  .about-left {
     padding: 1rem;
   }
 
-  .about-title {
-    font-size: clamp(1.5rem, 6vw, 1.9rem);
+  .about-hero,
+  .about-profile-card,
+  .about-panel,
+  .strength-card {
+    border-radius: 12px;
   }
 
-  .about-description {
-    font-size: 0.9rem;
+  .about-highlights {
+    grid-template-columns: 1fr;
   }
 
-  .education-badge {
-    padding: 0.65rem 0.85rem;
-    margin-bottom: 1.2rem;
+  .highlight-card {
+    min-block-size: 80px;
   }
 
-  .badge-text {
-    font-size: 1.2rem;
-  }
-
-  .education-timeline {
-    padding-left: 2.6rem;
-  }
-
-  .education-timeline::before {
-    left: 0.68rem;
-  }
-
-  .timeline-dot {
-    left: -2.65rem;
-    width: 1.8rem;
-    height: 1.8rem;
-    top: 0.85rem;
-    font-size: 0.8rem;
-  }
-
-  .timeline-item {
-    margin-bottom: 1.15rem;
-  }
-
-  .timeline-card {
-    border-radius: 14px;
+  .profile-card-header {
+    align-items: flex-start;
   }
 }

@@ -5,23 +5,47 @@
 .projects-section,
 .contact-section {
   background: transparent !important;
+  color: var(--text) !important;
 }
 
 .about-container,
 .experience-container,
-.skills-container,
 .services-container,
 .projects-container,
 .contact-container {
   max-width: 1120px;
   margin: 0 auto;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03) !important;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
+  border: 1px solid var(--panel-border);
+  background: var(--panel) !important;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
+.about-hero,
+.about-profile-card,
+.about-panel,
+.strength-card,
+.experience-card,
+.service-card,
+.contact-form,
+.info-item,
+.projects-search,
+.filter-chip,
+.case-study,
+.case-index,
+.tech-pill,
+.projects-toggle-btn {
+  border-color: var(--panel-border) !important;
+  background: var(--panel-strong) !important;
+  color: var(--text) !important;
+}
+
+.about-title,
+.profile-card-header h2,
+.about-panel h2,
+.strength-card h2,
+.education-item h3,
 .experience-title,
 .services-title,
 .projects-title,
@@ -29,11 +53,21 @@
 .contact-info h2,
 .case-content h2,
 .service-card h2,
-.experience-head h2 {
-  color: #f8fafc !important;
+.experience-head h2,
+.info-item h3,
+.connect-strip h3 {
+  color: var(--heading) !important;
+  -webkit-text-fill-color: initial !important;
 }
 
+.about-description,
+.strength-card p,
+.focus-list li,
+.idea-list li,
+.education-item p,
+.availability-panel p,
 .experience-subtitle,
+.projects-subtitle,
 .case-desc,
 .case-content ul li,
 .experience-meta,
@@ -41,51 +75,122 @@
 .service-card p,
 .contact-info p,
 .contact-form p,
+.contact-subtitle,
+.info-item p,
+.contact-form label,
 .skills-subtitle {
-  color: #cbd5e1 !important;
+  color: var(--text-muted) !important;
 }
 
-.case-image img,
-.contact-info img {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.projects-search,
-.filter-chip,
-.tech-pill,
-.projects-toggle-btn,
-.info-item,
-.service-card,
-.experience-card,
-.contact-form,
-.contact-form input,
-.contact-form textarea {
-  background: rgba(255, 255, 255, 0.04) !important;
-  color: #e2e8f0 !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-}
-
+.about-eyebrow,
+.skills-eyebrow,
+.projects-eyebrow,
+.case-index,
 .filter-chip.active,
 .case-link,
 .info-item .icon,
 .service-icon,
-.contact-btn,
-.projects-toggle-btn:hover {
-  color: #00d4f7 !important;
+.projects-toggle-btn:hover,
+.panel-heading svg,
+.education-item span {
+  color: var(--accent) !important;
+}
+
+.highlight-card,
+.skills-stat,
+.skill-cloud span,
+.contact-form input,
+.contact-form textarea {
+  border-color: var(--panel-border) !important;
+  background: var(--accent-soft) !important;
+  color: var(--text) !important;
+}
+
+.highlight-card strong,
+.skills-stat strong,
+.skill-cloud span,
+.focus-list svg,
+.education-dot {
+  color: var(--accent-strong) !important;
+}
+
+.education-dot {
+  background: var(--accent-strong) !important;
+}
+
+.case-content ul li::before {
+  background: var(--accent) !important;
+}
+
+.case-image img,
+.contact-info img {
+  border: 1px solid var(--panel-border);
 }
 
 .case-link,
-.contact-btn {
-  border-color: rgba(0, 212, 247, 0.45) !important;
+.contact-btn,
+.about-contact-link {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent) !important;
 }
 
-.contact-btn {
-  background: linear-gradient(135deg, #00d4f7, #35e0ff) !important;
-  color: #02131a !important;
+.contact-btn,
+.about-contact-link {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong)) !important;
+  color: var(--button-text) !important;
 }
 
-.contact-btn:hover {
-  background: linear-gradient(135deg, #35e0ff, #00d4f7) !important;
+.contact-btn-secondary {
+  background: transparent !important;
+  color: var(--heading) !important;
+}
+
+.home-container {
+  background: var(--page-bg) !important;
+  color: var(--heading);
+}
+
+.home-bg-animation,
+.floating-shapes {
+  opacity: 0 !important;
+}
+
+.text-section h1,
+.tagline,
+.scroll-cue,
+.subtitle {
+  color: var(--heading) !important;
+}
+
+.highlight,
+.cursor {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+  background: none !important;
+}
+
+.fact-chip,
+.intro-pill,
+.hero-social-links a,
+.btn-outline {
+  border-color: var(--panel-border) !important;
+  background: var(--panel-strong) !important;
+  color: var(--heading) !important;
+}
+
+.hero-social-links a svg {
+  color: var(--accent) !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong)) !important;
+  color: var(--button-text) !important;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.projects-search::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.85;
 }
 
 @media (max-width: 768px) {

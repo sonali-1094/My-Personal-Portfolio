@@ -135,7 +135,7 @@ export default function Home({ onNavigate }) {
               <span>GitHub</span>
             </a>
             <a
-              href="mailto:sonalirpatil361@gmail.com"
+              href="mailto:sonalirpatil109@gmail.com"
               aria-label="Email Sonali Patil"
               onClick={() => trackEvent("social_click", { platform: "email", source: "home_hero" })}
             >

@@ -33,16 +33,16 @@ const PROJECT_LIST = [
     categories: ["Frontend", "Backend", "Full Stack", "AI"]
   },
   {
-    id: "tomato",
-    title: "Tomato",
+    id: "gharsebite",
+    title: "GharSeBite",
     img: "/Tomato.webp",
     link: "https://food-delivary-rosy.vercel.app/",
-    description: "🍅 Tomato – Food Delivery Platform",
+    description: "Healthy food delivery app for hostel and PG students",
     results: [
-      "A modern food delivery web application focused on clean UI, smooth user flow, and responsiveness. The platform allows users to explore food items, view details, and experience a real-world food ordering interface built with reusable React components and optimized layout for all screen sizes.",
-      "Developed a full-stack food ordering system using React.js, Node.js, Express.js, and MongoDB with authentication, cart management, and admin dashboard."
+      "Created a student-focused meal ordering experience for hostel and PG residents who want affordable, healthy, home-style food.",
+      "Developed a full-stack ordering system using React.js, Node.js, Express.js, and MongoDB with authentication, cart management, and admin dashboard."
     ],
-    tech: ["React", "Node.js", "MongoDB", "Express"],
+    tech: ["React", "Node.js", "Express", "MongoDB"],
     categories: ["Frontend", "Backend", "Full Stack", "MERN Stack"]
   },
   {
@@ -163,7 +163,13 @@ export default function Projects() {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        <h1 className="projects-title">My Work</h1>
+        <div className="projects-heading">
+          <p className="projects-eyebrow">Selected builds</p>
+          <h1 className="projects-title">Project Case Studies</h1>
+          <p className="projects-subtitle">
+            A focused mix of full-stack products, AI tools, dashboards, and responsive interfaces.
+          </p>
+        </div>
 
         <div className="projects-toolbar">
           <div className="projects-filters">
@@ -204,6 +210,7 @@ export default function Projects() {
               </div>
 
               <div className="case-content">
+                <span className="case-index">{String(index + 1).padStart(2, "0")}</span>
                 <h2>{project.title}</h2>
                 <p className="case-desc">{project.description}</p>
 

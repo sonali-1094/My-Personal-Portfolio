@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -11,7 +12,7 @@ const NAV_ITEMS = [
   { id: "contact", label: "Contact" }
 ];
 
-export default function Navbar({ activeSection = "home", onNavigate }) {
+export default function Navbar({ activeSection = "home", onNavigate, theme = "dark", onToggleTheme }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -51,6 +52,16 @@ export default function Navbar({ activeSection = "home", onNavigate }) {
             </a>
           ))}
         </div>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          onClick={onToggleTheme}
+        >
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
+          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+        </button>
 
         <button
           type="button"

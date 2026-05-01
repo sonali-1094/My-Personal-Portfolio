@@ -47,7 +47,7 @@ export default function Footer() {
               <FaTwitter />
             </a>
             <a
-              href="mailto:sonalirpatil361@gmail.com"
+              href="mailto:sonalirpatil109@gmail.com"
               aria-label="Send email"
               onClick={() => trackEvent("social_click", { platform: "email" })}
             >
