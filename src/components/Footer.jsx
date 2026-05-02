@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { trackEvent } from "../utils/analytics";
 
@@ -10,13 +10,12 @@ export default function Footer() {
   return (
     <footer className="footer-section" id="footer">
       <div className="footer-container">
-
-        {/* LEFT SIDE */}
         <div className="footer-left">
           <h2 className="footer-name">Sonali Patil</h2>
-          <p className="footer-role">Creative developer making the web feel alive.
-                       Friendly code, Creative solutions Real impact. 
-                       Crafting experiences, not just interfaces.</p>
+          <p className="footer-role">
+            Creative developer building friendly interfaces, reliable web apps,
+            and practical AI-powered solutions.
+          </p>
 
           <div className="footer-social-icons">
             <a
@@ -54,11 +53,8 @@ export default function Footer() {
               <FaEnvelope />
             </a>
           </div>
-            <h3 className="footer-connect">Connect With Me </h3>
-
         </div>
 
-        {/* MIDDLE - SERVICES LIST */}
         <div className="footer-services">
           <h3>Services</h3>
           <a href="#services">Frontend Development</a>
@@ -67,13 +63,10 @@ export default function Footer() {
           <a href="#services">UI / UX Assistance</a>
           <a href="#services">Java & Spring Boot Development</a>
           <a href="#services">AI & GenAI Solutions</a>
-
-
         </div>
 
-        {/* RIGHT - NAVIGATION */}
         <div className="footer-links">
-
+          <h3>Explore</h3>
           <a href="#home">Home</a>
           <a href="#about">About Me</a>
           <a href="#experience">Experience</a>
@@ -83,11 +76,26 @@ export default function Footer() {
           <a href="#contact">Contact</a>
         </div>
 
+        <div className="footer-cta">
+          <h3>Have an idea?</h3>
+          <p>Send the details and I will get back to you with a practical next step.</p>
+          <a
+            className="footer-email-btn"
+            href="mailto:sonalirpatil109@gmail.com"
+            onClick={() => trackEvent("footer_email_click", { source: "footer" })}
+          >
+            <FaEnvelope />
+            Email Me
+          </a>
+        </div>
       </div>
 
-      {/* COPYRIGHT */}
       <div className="footer-bottom">
-        {`© ${currentYear} Sonali Patil - All Rights Reserved`}
+        <span>{`© ${currentYear} Sonali Patil. All rights reserved.`}</span>
+        <a href="#home" aria-label="Back to top">
+          <FaArrowUp />
+          Back to top
+        </a>
       </div>
     </footer>
   );

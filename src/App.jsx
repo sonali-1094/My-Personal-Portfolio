@@ -9,6 +9,7 @@ import Skills from "./components/Skills.jsx";
 import Services from "./components/Services.jsx";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
 import PortfolioAssistant from "./components/PortfolioAssistant.jsx";
 
 const SECTION_IDS = ["home", "about", "experience", "skills", "services", "projects", "contact"];
@@ -86,6 +87,7 @@ export default function App() {
           <Contact />
         </div>
       </main>
+      <Footer />
       <PortfolioAssistant />
     </div>
   );
