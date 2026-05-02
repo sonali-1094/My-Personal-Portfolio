@@ -68,7 +68,34 @@ test("submits successfully when form is valid", async () => {
   );
 });
 
-test("shows email fallback when EmailJS rejects the public key", async () => {
+test("accepts the alternate EmailJS public key env name", async () => {
+  const user = userEvent.setup();
+  vi.stubEnv("VITE_EMAILJS_SERVICE_ID", "service_test");
+  vi.stubEnv("VITE_EMAILJS_TEMPLATE_ID", "template_test");
+  vi.stubEnv("VITE_EMAILJS_PUBLIC_KEY", "");
+  vi.stubEnv("VITE_EMAILJS_PUBLICKEY", "alternate_public_test");
+  vi.resetModules();
+  const { default: Contact } = await import("../Contact");
+  emailjs.send.mockResolvedValueOnce({ status: 200, text: "OK" });
+  render(<Contact />);
+
+  await user.type(screen.getByLabelText(/your name/i), "Sonali");
+  await user.type(screen.getByLabelText(/your email/i), "sonali@example.com");
+  await user.type(screen.getByLabelText(/your message/i), "Hello there");
+  await user.click(screen.getByRole("button", { name: /send message/i }));
+
+  expect(await screen.findByText(/message sent successfully/i)).toBeInTheDocument();
+  expect(emailjs.send).toHaveBeenCalledWith(
+    "service_test",
+    "template_test",
+    expect.any(Object),
+    {
+      publicKey: "alternate_public_test",
+    }
+  );
+});
+
+test("shows direct email fallback when EmailJS rejects the public key", async () => {
   const user = userEvent.setup();
   emailjs.send.mockRejectedValueOnce({
     text: "The Public Key is invalid. To find this ID, visit https://dashboard.emailjs.com/admin/account",
@@ -81,7 +108,7 @@ test("shows email fallback when EmailJS rejects the public key", async () => {
   await user.click(screen.getByRole("button", { name: /send message/i }));
 
   expect(
-    await screen.findByText(/contact form setup needs a valid emailjs public key/i)
+    await screen.findByText(/contact form is temporarily unavailable/i)
   ).toBeInTheDocument();
   expect(screen.getByRole("link", { name: /open email app/i })).toHaveAttribute(
     "href",

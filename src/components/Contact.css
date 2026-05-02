@@ -129,9 +129,19 @@
   color: #000;
 }
 
-.info-item p {
+.info-item p,
+.info-item a {
   font-size: 1rem;
   color: #666;
+}
+
+.info-item a {
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.info-item a:hover {
+  color: #ff004f;
 }
 
 .connect-strip {

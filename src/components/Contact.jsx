@@ -5,13 +5,23 @@ import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { trackEvent } from "../utils/analytics";
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
+const getEnvValue = (...values) =>
+  values
+    .find((value) => typeof value === "string" && value.trim())
+    ?.trim();
+
+const EMAILJS_SERVICE_ID = getEnvValue(import.meta.env.VITE_EMAILJS_SERVICE_ID);
+const EMAILJS_TEMPLATE_ID = getEnvValue(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+const EMAILJS_PUBLIC_KEY = getEnvValue(
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  import.meta.env.VITE_EMAILJS_PUBLICKEY,
+  import.meta.env.VITE_EMAILJS_USER_ID
+);
 const MIN_SUBMIT_INTERVAL_MS = 20_000;
 const DIRECT_CONTACT_EMAIL = "sonalirpatil109@gmail.com";
-const EMAILJS_CONFIG_ERROR_MESSAGE =
-  "Contact form setup needs a valid EmailJS public key. Please use the email option below.";
+const DIRECT_CONTACT_HREF = `mailto:${DIRECT_CONTACT_EMAIL}`;
+const EMAILJS_FALLBACK_MESSAGE =
+  "Contact form is temporarily unavailable. Please email me directly.";
 
 export default function Contact() {
   const form = useRef();
@@ -52,7 +62,7 @@ export default function Contact() {
 
     if (!isEmailConfigured) {
       setStatusType("error");
-      setStatusMessage("Contact form is temporarily unavailable. Please email me directly.");
+      setStatusMessage(EMAILJS_FALLBACK_MESSAGE);
       setFallbackMailtoHref(buildMailtoHref());
       return;
     }
@@ -107,14 +117,9 @@ export default function Contact() {
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       const errorReason = error?.text || error?.message || "Unknown error";
-      const isPublicKeyError = /public key/i.test(errorReason);
-      console.error("EmailJS send error:", error);
+      console.error("EmailJS send error:", errorReason);
       setStatusType("error");
-      setStatusMessage(
-        isPublicKeyError
-          ? EMAILJS_CONFIG_ERROR_MESSAGE
-          : `Message could not be sent: ${errorReason}. Please use the email option below.`
-      );
+      setStatusMessage(EMAILJS_FALLBACK_MESSAGE);
       setFallbackMailtoHref(buildMailtoHref());
       trackEvent("contact_submit_error", {
         source: "contact_form",
@@ -145,7 +150,7 @@ export default function Contact() {
               <FaEnvelope className="icon" />
               <div>
                 <h3>Email Me</h3>
-                <p>sonalirpatil109@gmail.com</p>
+                <a href={DIRECT_CONTACT_HREF}>sonalirpatil109@gmail.com</a>
               </div>
             </div>
 
